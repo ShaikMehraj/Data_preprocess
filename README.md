@@ -17,10 +17,10 @@ Packages will be using :
 For feeding data to a model, it is convenient to use a DataFrame, which stores data in a tabular format and allows easy modification and manipulation in memory, avoiding the need to repeatedly import the file.
 
 For reading file code to be used : 
-
+```
 df = pd.read_csv(file path)
 df = pd.read_excel(file path)
-
+```
 
 Depending on file format can be chosse the extebtion by [link](https://pandas.pydata.org/docs/user_guide/io.html)
 
