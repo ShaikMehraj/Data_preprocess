@@ -25,7 +25,7 @@ df = pd.read_excel(file path)
 Depending on file format can be chosse the extebtion by [link](https://pandas.pydata.org/docs/user_guide/io.html)
 
 
-df.info() provides a summary of the DataFrame, including column names, their data types, the number of non-null values, and memory usage.
+"df.info()" provides a summary of the DataFrame, including column names, their data types, the number of non-null values, and memory usage.
 
 
 df.isnull().sum() returns the number of missing (null) values in each column of the DataFrame.
@@ -35,12 +35,14 @@ df.isnull().sum() returns the number of missing (null) values in each column of 
 
 
 Changing the data type of discounted price
+```python
 
 df['discounted_price'] = df['discounted_price'].str.replace("₹", '')   # remove ₹ symbol
 
 df['discounted_price'] = df['discounted_price'].str.replace(",", '')  # remove commas
 
 df['discounted_price'] = df['discounted_price'].astype('float64')     # convert to float
+```
 
 Input : "₹1,299"  output :  1299.0
 
