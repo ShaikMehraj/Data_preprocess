@@ -45,3 +45,25 @@ Input : "₹1,299"  output :  1299.0
 
 Finding unusual string in rating column
 df['rating'].value_counts()
+
+
+df.describe()
+By default, it summarizes only numeric columns.
+
+It gives statistics like:
+
+count → number of non-null values
+
+mean → average
+
+std → standard deviation
+
+min → minimum value
+
+25% → 1st quartile (25th percentile)
+
+50% → median (50th percentile)
+
+75% → 3rd quartile (75th percentile)
+
+max → maximum value
