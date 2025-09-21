@@ -53,26 +53,29 @@ df['rating'].value_counts()
 ```df.describe()``` By default, it summarizes only numeric columns.
 
 **It gives statistics like:**
-* count → number of non-null values
-* mean → average
-* std → standard deviation
-* min → minimum value
-* 25% → 1st quartile (25th percentile)
-* 50% → median (50th percentile)
-* 75% → 3rd quartile (75th percentile)
-* max → maximum value
+* **count** → number of non-null values
+* **mean** → average
+* **std** → standard deviation
+* **min** → minimum value
+* **25%** → 1st quartile (25th percentile)
+* **50%** → median (50th percentile)
+* **75%** → 3rd quartile (75th percentile)
+* **max** → maximum value
 
 
-```df.isnull().sum().sort_values(ascending = False)```  This line counts the missing values in each column of the DataFrame and sorts the columns from most to least missing values.
+```python
+df.isnull().sum().sort_values(ascending = False)
+```  
+This line counts the missing values in each column of the DataFrame and sorts the columns from most to least missing values.
 
 
-```
+```python
 # Filling missing values with median value
 df['rating_count'] = df.rating_count.fillna(value=df['rating_count'].median())
 ```
-For more explanation and methods refer [Handling missing Values in dataset](https://medium.com/@pingsubhak/handling-missing-values-in-dataset-7-methods-that-you-need-to-know-5067d4e32b62)
+For more explanation and methods refer [Handling missing values in dataset](https://medium.com/@pingsubhak/handling-missing-values-in-dataset-7-methods-that-you-need-to-know-5067d4e32b62)
 
-```
+```python
 # Find Duplicate 
 df.duplicated().any()
 ```
@@ -81,35 +84,40 @@ This line checks if the DataFrame contains any duplicate rows and returns True i
 
 # Data vizulalization 
 
-Plot actual_price vs. rating
+Plot actual_price vs. rating \
+```python
 plt.scatter(df['actual_price'], df['rating'])
 plt.xlabel('Actual_price')
 plt.ylabel('Rating')
 plt.show()
+```
 
 
 A correlation heatmap is a visual graphic that shows how each variable in the dataset are correlated to one another. -1 signifies zero correlation, while 1 signifies a perfect correlation.
-Refer for more knowloge : [link](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
+Refer for more information : [link](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
 
 
-#LabelEncoder
+#LabelEncoder \
+```python
 le_category = LabelEncoder()
-Converts labels to numbers 
+```
+Converts labels to numbers \
 ex: 
 Electronics → 0  
 Clothing    → 1  
 Books       → 2
 
 Calculate mean sales by product category
+```python
 grouped_df = df.groupby('category')['rating'].mean()
 Print mean sales by product category
 print(grouped_df)
-
+```
 For each category group, it calculates the average (mean) of the rating column.
 
 So you get the average product rating per category.
 
-grouped_df will be a Series where:
+```grouped_df``` will be a Series where:
 
 Index = product category
 
