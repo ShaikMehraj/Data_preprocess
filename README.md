@@ -17,7 +17,7 @@ Packages will be using :
 For feeding data to a model, it is convenient to use a DataFrame, which stores data in a tabular format and allows easy modification and manipulation in memory, avoiding the need to repeatedly import the file.
 
 For reading file code to be used : 
-```
+```python
 df = pd.read_csv(file path)
 df = pd.read_excel(file path)
 ```
@@ -28,7 +28,7 @@ Depending on file format can be chosse the extebtion by [link](https://pandas.py
 "df.info()" provides a summary of the DataFrame, including column names, their data types, the number of non-null values, and memory usage.
 
 
-df.isnull().sum() returns the number of missing (null) values in each column of the DataFrame.
+```df.isnull().sum()``` returns the number of missing (null) values in each column of the DataFrame.
 
 
 # Data cleaning and data converstion :
