@@ -10,7 +10,7 @@ Performing with existing Blog, Refer : [Dataset](https://www.kaggle.com/code/meh
 3. **Matplotlib:** Data visualization and plotting
 4. **Seaborn:** Enhanced data visualization and statistical graphics
 6. **Scikit-learn:** For predective data analysis
-5. **Scipy:** Scientific computing and advanced mathematical operations.
+5. **Scipy:** Scientific computing and advanced mathematical operations
 
 
 
