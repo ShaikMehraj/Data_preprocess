@@ -12,22 +12,32 @@ Packages will be using :
 5. Scipy: Scientific computing and advanced mathematical operations
 6. Scikit-learn : For predective data analysis
 
+
+
 For feeding data to a model, it is convenient to use a DataFrame, which stores data in a tabular format and allows easy modification and manipulation in memory, avoiding the need to repeatedly import the file.
 
 for reading file code to be used : 
+
 df = pd.read_csv(file path)
 df = pd.read_excel(file path)
 
-depending on file format can be chosse the extebtion by [link](https://pandas.pydata.org/docs/user_guide/io.html)
+
+Depending on file format can be chosse the extebtion by [link](https://pandas.pydata.org/docs/user_guide/io.html)
+
 
 df.info() provides a summary of the DataFrame, including column names, their data types, the number of non-null values, and memory usage.
 
+
 df.isnull().sum() returns the number of missing (null) values in each column of the DataFrame.
 
-# data cleaning and data converstion :
+
+# Data cleaning and data converstion :
 Changing the data type of discounted price
+
 df['discounted_price'] = df['discounted_price'].str.replace("₹", '')   # remove ₹ symbol
+
 df['discounted_price'] = df['discounted_price'].str.replace(",", '')  # remove commas
+
 df['discounted_price'] = df['discounted_price'].astype('float64')     # convert to float
 
 Input : "₹1,299"  output :  1299.0
