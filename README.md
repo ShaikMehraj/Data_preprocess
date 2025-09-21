@@ -94,10 +94,10 @@ plt.show()
 
 
 A correlation heatmap is a visual graphic that shows how each variable in the dataset are correlated to one another. -1 signifies zero correlation, while 1 signifies a perfect correlation.
-Refer for more information : [link](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
+For more information on correlation read [Correlation Heatmap](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
 
 
-#LabelEncoder\
+#LabelEncoder
 ```python
 le_category = LabelEncoder()
 ```
@@ -114,14 +114,11 @@ Print mean sales by product category
 print(grouped_df)
 ```
 For each category group, it calculates the average (mean) of the rating column.
-
 So you get the average product rating per category.
 
 ```grouped_df``` will be a Series where:
-
-Index = product category
-
-Value = average rating of that category
+* Index = product category
+* Value = average rating of that category
 
 
 The Chi-Square (χ²) Test is a statistical test used to check if there is a relationship between two categorical variables.
