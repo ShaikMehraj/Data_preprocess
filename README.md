@@ -16,7 +16,7 @@ Packages will be using :
 
 For feeding data to a model, it is convenient to use a DataFrame, which stores data in a tabular format and allows easy modification and manipulation in memory, avoiding the need to repeatedly import the file.
 
-for reading file code to be used : 
+For reading file code to be used : 
 
 df = pd.read_csv(file path)
 df = pd.read_excel(file path)
@@ -130,5 +130,5 @@ p < 0.05 → significant relationship (variables are dependent).
 p ≥ 0.05 → no significant relationship (variables are independent).
 
 
-inverse transform the data
+Inverse transform the data
 This reverses the encoding and converts the numbers back into their original string labels.
