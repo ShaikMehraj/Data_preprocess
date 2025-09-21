@@ -72,3 +72,14 @@ max → maximum value
 
 
 df.isnull().sum().sort_values(ascending = False) , This line counts the missing values in each column of the DataFrame and sorts the columns from most to least missing values.
+
+
+
+# Filling missing values with median value
+df['rating_count'] = df.rating_count.fillna(value=df['rating_count'].median())
+For more explanation and methods refer [LINK](https://medium.com/@pingsubhak/handling-missing-values-in-dataset-7-methods-that-you-need-to-know-5067d4e32b62)
+
+
+# Find Duplicate 
+df.duplicated().any()
+This line checks if the DataFrame contains any duplicate rows and returns True if there is at least one duplicate, otherwise False.
