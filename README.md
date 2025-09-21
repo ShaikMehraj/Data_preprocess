@@ -28,8 +28,7 @@ Depending on file format ```pd.read_(file_type)``` can be changed, for further d
 
 ```df.info()``` provides a summary of the DataFrame, including column names, their data types, the number of non-null values, and memory usage.
 
-
-```df.isnull().sum()``` returns the number of missing (null) values in each column of the DataFrame.
+***```df.isnull().sum()```*** returns the number of missing (null) values in each column of the DataFrame.
 
 
 # Data cleaning and data converstion :
@@ -41,7 +40,7 @@ df['discounted_price'] = df['discounted_price'].str.replace(",", '')  # remove c
 df['discounted_price'] = df['discounted_price'].astype('float64')     # convert to float
 ```
 
-For example,\
+For example \
 Input : "₹1,299"  output :  1299.0
 
 
