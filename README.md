@@ -49,19 +49,18 @@ Finding un-usual string in rating column
 ```python
 df['rating'].value_counts()
 ```
-\
 
 ```df.describe()``` By default, it summarizes only numeric columns.
 
 **It gives statistics like:**
-    * count → number of non-null values
-    * mean → average
-    * std → standard deviation
-    * min → minimum value
-    * 25% → 1st quartile (25th percentile)
-    * 50% → median (50th percentile)
-    * 75% → 3rd quartile (75th percentile)
-    * max → maximum value
+* count → number of non-null values
+* mean → average
+* std → standard deviation
+* min → minimum value
+* 25% → 1st quartile (25th percentile)
+* 50% → median (50th percentile)
+* 75% → 3rd quartile (75th percentile)
+* max → maximum value
 
 
 ```df.isnull().sum().sort_values(ascending = False)```  This line counts the missing values in each column of the DataFrame and sorts the columns from most to least missing values.
