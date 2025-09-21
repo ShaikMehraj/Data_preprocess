@@ -41,7 +41,7 @@ df['discounted_price'] = df['discounted_price'].str.replace(",", '')  # remove c
 df['discounted_price'] = df['discounted_price'].astype('float64')     # convert to float
 ```
 
-For example,
+For example,\
 Input : "₹1,299"  output :  1299.0
 
 
