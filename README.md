@@ -69,3 +69,6 @@ min → minimum value
 75% → 3rd quartile (75th percentile)
 
 max → maximum value
+
+
+df.isnull().sum().sort_values(ascending = False) , This line counts the missing values in each column of the DataFrame and sorts the columns from most to least missing values.
