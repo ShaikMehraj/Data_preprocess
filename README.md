@@ -10,6 +10,7 @@ Packages will be using :
 3. Matplotlib: Data visualization and plotting
 4. Seaborn: Enhanced data visualization and statistical graphics
 5. Scipy: Scientific computing and advanced mathematical operations
+6. Scikit-learn : For predective data analysis
 
 For feeding data to a model, it is convenient to use a DataFrame, which stores data in a tabular format and allows easy modification and manipulation in memory, avoiding the need to repeatedly import the file.
 
@@ -23,8 +24,8 @@ df.info() provides a summary of the DataFrame, including column names, their dat
 
 df.isnull().sum() returns the number of missing (null) values in each column of the DataFrame.
 
-data cleaning and data converstion :
-# Changing the data type of discounted price
+# data cleaning and data converstion :
+Changing the data type of discounted price
 df['discounted_price'] = df['discounted_price'].str.replace("₹", '')   # remove ₹ symbol
 df['discounted_price'] = df['discounted_price'].str.replace(",", '')  # remove commas
 df['discounted_price'] = df['discounted_price'].astype('float64')     # convert to float
