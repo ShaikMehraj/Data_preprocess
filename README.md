@@ -2,9 +2,9 @@
 Exploring the fundamentals of Machine Learning starts with importing and preparing data, then using visualization and Exploratory Data Analysis (EDA) to understand patterns, distributions, and relationships. This foundation ensures the data is ready for effective model building.
 
 
-Performing with existing Blog ; Refer : [Kaggel](https://www.kaggle.com/code/mehakiftikhar/amazon-sales-dataset-eda#Amazon-Sales-Dataset-EDA)
+Performing with existing Blog, Refer : [Dataset](https://www.kaggle.com/code/mehakiftikhar/amazon-sales-dataset-eda#Amazon-Sales-Dataset-EDA)
 
-# Packages used in the program : 
+# Packages used in the program 
 1. **Pandas:** Data manipulation and analysis
 2. **Numpy:** Numerical operations and calculations
 3. **Matplotlib:** Data visualization and plotting
@@ -14,16 +14,16 @@ Performing with existing Blog ; Refer : [Kaggel](https://www.kaggle.com/code/meh
 
 
 
-To feed data to a model, it is convenient to use a __DataFrame__, which stores data in a tabular format and allows easy modification and manipulation in memory, avoiding the need to repeatedly import the file.
+To feed data to a model, it is convenient to use a __DataFrame__, which stores data in a tabular format and allows easy modification and manipulation in memory, eliminating the need to repeatedly import the file.
 
-For reading file the code below can be used : 
+For reading file the code below can be used 
 
 ```python
 df = pd.read_csv(file path)
 df = pd.read_excel(file path)
 ```
 
-Depending on file format ```pd.read_(file_type)``` can be changed, for further details related to file formats please refer to [IO tools](https://pandas.pydata.org/docs/user_guide/io.html)
+Depending on file format ```pd.read_(file_type)``` can be changed, for details related to file formats please refer to [IO tools](https://pandas.pydata.org/docs/user_guide/io.html)
 
 
 ```df.info()``` provides a summary of the DataFrame, including column names, their data types, the number of non-null values, and memory usage.
@@ -31,7 +31,7 @@ Depending on file format ```pd.read_(file_type)``` can be changed, for further d
 ```df.isnull().sum()``` returns the number of missing (null) values in each column of the DataFrame.
 
 
-# Data cleaning and data converstion :
+# Data cleaning and data converstion
 
 Changing the data type of discounted price
 ```python
@@ -40,8 +40,9 @@ df['discounted_price'] = df['discounted_price'].str.replace(",", '')  # remove c
 df['discounted_price'] = df['discounted_price'].astype('float64')     # convert to float
 ```
 
-For example \
-Input : "₹1,299"  output :  1299.0
+For example\
+Input : "₹1,299"\
+output :  1299.0
 
 
 Finding un-usual string in rating column
@@ -84,7 +85,7 @@ This line checks if the DataFrame contains any duplicate rows and returns True i
 
 # Data vizulalization 
 
-Plot actual_price vs. rating 
+Plot ```actual_price``` vs. ```rating ```
 ```python
 plt.scatter(df['actual_price'], df['rating'])
 plt.xlabel('Actual_price')
@@ -93,7 +94,8 @@ plt.show()
 ```
 
 
-A correlation heatmap is a visual graphic that shows how each variable in the dataset are correlated to one another. -1 signifies zero correlation, while 1 signifies a perfect correlation.
+A correlation heatmap is a visual graphic that shows how each variable in the dataset are correlated to one another.\
+-1 signifies zero correlation, while 1 signifies a perfect correlation.
 For more information on correlation read [Correlation Heatmap](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
 
 
