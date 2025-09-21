@@ -97,7 +97,7 @@ A correlation heatmap is a visual graphic that shows how each variable in the da
 For more information on correlation read [Correlation Heatmap](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
 
 
-#LabelEncoder
+Label Encoder
 ```python
 le_category = LabelEncoder()
 ```
@@ -123,10 +123,8 @@ So you get the average product rating per category.
 
 The Chi-Square (χ²) Test is a statistical test used to check if there is a relationship between two categorical variables.
 The test gives you a Chi-Square statistic and a p-value:
-
-p < 0.05 → significant relationship (variables are dependent).
-
-p ≥ 0.05 → no significant relationship (variables are independent).
+* p < 0.05 → significant relationship (variables are dependent).
+* p ≥ 0.05 → no significant relationship (variables are independent).
 
 
 Inverse transform the data
