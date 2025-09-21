@@ -23,12 +23,12 @@ df = pd.read_csv(file path)
 df = pd.read_excel(file path)
 ```
 
-Depending on file format ```pd.read_(file_type)``` can be changed, for further details please refer to [IO tools](https://pandas.pydata.org/docs/user_guide/io.html)
+Depending on file format ```pd.read_(file_type)``` can be changed, for further details related to file formats please refer to [IO tools](https://pandas.pydata.org/docs/user_guide/io.html)
 
 
 ```df.info()``` provides a summary of the DataFrame, including column names, their data types, the number of non-null values, and memory usage.
 
-***```df.isnull().sum()```*** returns the number of missing (null) values in each column of the DataFrame.
+```df.isnull().sum()``` returns the number of missing (null) values in each column of the DataFrame.
 
 
 # Data cleaning and data converstion :
@@ -44,30 +44,24 @@ For example \
 Input : "₹1,299"  output :  1299.0
 
 
-Finding unusual string in rating column
+Finding un-usual string in rating column
 
 ```python
 df['rating'].value_counts()
 ```
+\
+
 ```df.describe()``` By default, it summarizes only numeric columns.
 
-It gives statistics like:
-
-count → number of non-null values
-
-mean → average
-
-std → standard deviation
-
-min → minimum value
-
-25% → 1st quartile (25th percentile)
-
-50% → median (50th percentile)
-
-75% → 3rd quartile (75th percentile)
-
-max → maximum value
+**It gives statistics like:**
+    * count → number of non-null values
+    * mean → average
+    * std → standard deviation
+    * min → minimum value
+    * 25% → 1st quartile (25th percentile)
+    * 50% → median (50th percentile)
+    * 75% → 3rd quartile (75th percentile)
+    * max → maximum value
 
 
 ```df.isnull().sum().sort_values(ascending = False)```  This line counts the missing values in each column of the DataFrame and sorts the columns from most to least missing values.
