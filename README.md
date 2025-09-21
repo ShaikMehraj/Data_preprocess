@@ -97,11 +97,7 @@ A correlation heatmap is a visual graphic that shows how each variable in the da
 For more information on correlation read [Correlation Heatmap](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
 
 
-Label Encoder
-```python
-le_category = LabelEncoder()
-```
-Converts labels to numbers\
+Label Encoder ```le_category = LabelEncoder()``` Converts labels to numbers\
 ex:\
 Electronics → 0  
 Clothing    → 1  
