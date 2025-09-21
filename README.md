@@ -76,7 +76,7 @@ max → maximum value
 # Filling missing values with median value
 df['rating_count'] = df.rating_count.fillna(value=df['rating_count'].median())
 ```
-For more explanation and methods refer [LINK](https://medium.com/@pingsubhak/handling-missing-values-in-dataset-7-methods-that-you-need-to-know-5067d4e32b62)
+For more explanation and methods refer [Handling missing Values in dataset](https://medium.com/@pingsubhak/handling-missing-values-in-dataset-7-methods-that-you-need-to-know-5067d4e32b62)
 
 ```
 # Find Duplicate 
