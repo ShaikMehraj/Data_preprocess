@@ -31,7 +31,7 @@ df.info() provides a summary of the DataFrame, including column names, their dat
 df.isnull().sum() returns the number of missing (null) values in each column of the DataFrame.
 
 
-# Data cleaning and data converstion :)
+# Data cleaning and data converstion :
 
 
 Changing the data type of discounted price
