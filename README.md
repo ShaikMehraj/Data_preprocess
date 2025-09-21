@@ -84,7 +84,7 @@ This line checks if the DataFrame contains any duplicate rows and returns True i
 
 # Data vizulalization 
 
-Plot actual_price vs. rating \
+Plot actual_price vs. rating 
 ```python
 plt.scatter(df['actual_price'], df['rating'])
 plt.xlabel('Actual_price')
@@ -97,18 +97,18 @@ A correlation heatmap is a visual graphic that shows how each variable in the da
 Refer for more information : [link](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
 
 
-#LabelEncoder \
+#LabelEncoder\
 ```python
 le_category = LabelEncoder()
 ```
-Converts labels to numbers \
-ex: 
+Converts labels to numbers\
+ex:\
 Electronics → 0  
 Clothing    → 1  
 Books       → 2
 
-Calculate mean sales by product category
 ```python
+# Calculate mean sales by product category
 grouped_df = df.groupby('category')['rating'].mean()
 Print mean sales by product category
 print(grouped_df)
