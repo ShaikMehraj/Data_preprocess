@@ -83,3 +83,52 @@ For more explanation and methods refer [LINK](https://medium.com/@pingsubhak/han
 # Find Duplicate 
 df.duplicated().any()
 This line checks if the DataFrame contains any duplicate rows and returns True if there is at least one duplicate, otherwise False.
+
+
+# Data vizulalization 
+
+Plot actual_price vs. rating
+plt.scatter(df['actual_price'], df['rating'])
+plt.xlabel('Actual_price')
+plt.ylabel('Rating')
+plt.show()
+
+
+A correlation heatmap is a visual graphic that shows how each variable in the dataset are correlated to one another. -1 signifies zero correlation, while 1 signifies a perfect correlation.
+Refer for more knowloge : [link](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
+
+
+#LabelEncoder
+le_category = LabelEncoder()
+Converts labels to numbers 
+ex: 
+Electronics → 0  
+Clothing    → 1  
+Books       → 2
+
+Calculate mean sales by product category
+grouped_df = df.groupby('category')['rating'].mean()
+Print mean sales by product category
+print(grouped_df)
+
+For each category group, it calculates the average (mean) of the rating column.
+
+So you get the average product rating per category.
+
+grouped_df will be a Series where:
+
+Index = product category
+
+Value = average rating of that category
+
+
+The Chi-Square (χ²) Test is a statistical test used to check if there is a relationship between two categorical variables.
+The test gives you a Chi-Square statistic and a p-value:
+
+p < 0.05 → significant relationship (variables are dependent).
+
+p ≥ 0.05 → no significant relationship (variables are independent).
+
+
+inverse transform the data
+This reverses the encoding and converts the numbers back into their original string labels.
