@@ -4,7 +4,7 @@ Exploring the fundamentals of Machine Learning starts with importing and prepari
 
 Performing with existing Blog ; Refer : [Kaggel](https://www.kaggle.com/code/mehakiftikhar/amazon-sales-dataset-eda#Amazon-Sales-Dataset-EDA)
 
-Packages will be using : 
+# Packages used in the program : 
 1. Pandas: Data manipulation and analysis
 2. Numpy: Numerical operations and calculations
 3. Matplotlib: Data visualization and plotting
@@ -14,9 +14,9 @@ Packages will be using :
 
 
 
-For feeding data to a model, it is convenient to use a DataFrame, which stores data in a tabular format and allows easy modification and manipulation in memory, avoiding the need to repeatedly import the file.
+To feeding data to a model, it is convenient to use a DataFrame, which stores data in a tabular format and allows easy modification and manipulation in memory, avoiding the need to repeatedly import the file.
 
-For reading file code to be used : 
+For reading file the code below can be used : 
 ```python
 df = pd.read_csv(file path)
 df = pd.read_excel(file path)
@@ -25,7 +25,7 @@ df = pd.read_excel(file path)
 Depending on file format can be chosse the extebtion by [link](https://pandas.pydata.org/docs/user_guide/io.html)
 
 
-"df.info()" provides a summary of the DataFrame, including column names, their data types, the number of non-null values, and memory usage.
+```df.info()``` provides a summary of the DataFrame, including column names, their data types, the number of non-null values, and memory usage.
 
 
 ```df.isnull().sum()``` returns the number of missing (null) values in each column of the DataFrame.
@@ -33,14 +33,10 @@ Depending on file format can be chosse the extebtion by [link](https://pandas.py
 
 # Data cleaning and data converstion :
 
-
 Changing the data type of discounted price
 ```python
-
 df['discounted_price'] = df['discounted_price'].str.replace("₹", '')   # remove ₹ symbol
-
 df['discounted_price'] = df['discounted_price'].str.replace(",", '')  # remove commas
-
 df['discounted_price'] = df['discounted_price'].astype('float64')     # convert to float
 ```
 
@@ -48,9 +44,10 @@ Input : "₹1,299"  output :  1299.0
 
 
 Finding unusual string in rating column
+
+```python
 df['rating'].value_counts()
-
-
+```
 df.describe()
 By default, it summarizes only numeric columns.
 
