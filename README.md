@@ -32,6 +32,8 @@ df.isnull().sum() returns the number of missing (null) values in each column of 
 
 
 # Data cleaning and data converstion :
+
+
 Changing the data type of discounted price
 
 df['discounted_price'] = df['discounted_price'].str.replace("₹", '')   # remove ₹ symbol
