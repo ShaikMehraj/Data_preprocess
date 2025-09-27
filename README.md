@@ -11,6 +11,7 @@ Performing with existing Blog, Refer : [Amazon EDA Dataset](https://www.kaggle.c
 4. **Seaborn:** Enhanced data visualization and statistical graphics
 6. **Scikit-learn:** For predective data analysis
 5. **Scipy:** Scientific computing and advanced mathematical operations
+6. **scikit-learn** The sklearn library contains a lot of efficient tools for machine learning and statistical modeling including classification, regression, clustering and dimensionality reduction.
 
 
 
@@ -44,6 +45,11 @@ For example\
 Input : "₹1,299"\
 output :  1299.0
 
+concating the Date of birth columns
+```python
+df['DOB'] = df.apply(lambda x:'%s-%s-%s' % (x['dob_day'],x['dob_month'],x['dob_year']),axis=1)
+df['DOB'] = pd.to_datetime(df['DOB']) # Changing the data type
+```
 
 Finding un-usual string in rating column
 
@@ -104,6 +110,7 @@ A correlation heatmap is a visual graphic that shows how each variable in the da
 -1 signifies zero correlation, while 1 signifies a perfect correlation.
 For more information on correlation read [Correlation Heatmap](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
 
+# Feature Eng
 
 Label Encoder ```le_category = LabelEncoder()``` Converts labels to numbers\
 ex:\
@@ -133,3 +140,17 @@ The test gives you a Chi-Square statistic and a p-value:
 
 Inverse transform the data
 This reverses the encoding and converts the numbers back into their original string labels.
+
+
+#One-Hot Encoding
+while One-Hot Encoding creates a new binary column for each category, best for nominal data (where order doesn't matter).Allows the model to learn separate weights for each category, leading to more nuanced decisions.
+Cons:
+Significantly increases the dimensionality of the dataset, especially with many unique categories. 
+Can lead to increased memory consumption and slower training times. 
+
+Better way to learn is from comparing : [link](https://towardsdatascience.com/encoding-categorical-variables-one-hot-vs-dummy-encoding-6d5b9c46e2db/)
+
+Take out on above article : 
+One-Hot Encoding is best for Nominla cattogorical data.
+Label encoding is best for Ordinal cattogorical data.
+Dummies encoding is best for when need to keep lighter and removes a duplicate category in each categorical variable.
