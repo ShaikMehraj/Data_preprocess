@@ -82,6 +82,12 @@ for x in df.index:
 ```
 Above line of code will remove the or delete the rows which has certain values , such as outliers 
 
+concating the Date of birth columns
+```python
+df['DOB'] = df.apply(lambda x:'%s-%s-%s' % (x['dob_day'],x['dob_month'],x['dob_year']),axis=1)
+df['DOB'] = pd.to_datetime(df['DOB']) # Changing the data type
+```
+
 ```python
 # Filling missing values with median value
 df['rating_count'] = df.rating_count.fillna(value=df['rating_count'].median())
@@ -154,3 +160,6 @@ Take out on above article :
 One-Hot Encoding is best for Nominla cattogorical data.
 Label encoding is best for Ordinal cattogorical data.
 Dummies encoding is best for when need to keep lighter and removes a duplicate category in each categorical variable.
+
+Binning :
+Binning is the process of grouping or categorizing continuous data into smaller, discrete sets called "bins" or "buckets". This technique is widely used in data mining and machine learning to convert continuous variables into categorical ones, such as turning age into "age ranges".
