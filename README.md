@@ -69,6 +69,12 @@ df.isnull().sum().sort_values(ascending = False)
 ```  
 This line counts the missing values in each column of the DataFrame and sorts the columns from most to least missing values.
 
+```python
+for x in df.index:
+  if df.loc[x, "age"] > 80:
+    df.drop(x, inplace = True)
+```
+Above line of code will remove the or delete the rows which has certain values , such as outliers 
 
 ```python
 # Filling missing values with median value
