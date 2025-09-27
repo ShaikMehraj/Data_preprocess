@@ -161,5 +161,18 @@ One-Hot Encoding is best for Nominla cattogorical data.
 Label encoding is best for Ordinal cattogorical data.
 Dummies encoding is best for when need to keep lighter and removes a duplicate category in each categorical variable.
 
-Binning :
+Binning :-
+
 Binning is the process of grouping or categorizing continuous data into smaller, discrete sets called "bins" or "buckets". This technique is widely used in data mining and machine learning to convert continuous variables into categorical ones, such as turning age into "age ranges".
+
+#pipeline
+
+An ML pipeline automates and standardizes a series of steps in the machine learning workflow, from data collection and preprocessing to model training, deployment, and monitoring, creating a repeatable and scalable process
+
+```python
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(SimpleImputer(strategy='mean'),
+                      PolynomialFeatures(degree=2),
+                      LinearRegression())
+```
