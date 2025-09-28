@@ -112,10 +112,6 @@ plt.show()
 ```
 
 
-A correlation heatmap is a visual graphic that shows how each variable in the dataset are correlated to one another.\
--1 signifies zero correlation, while 1 signifies a perfect correlation.
-For more information on correlation read [Correlation Heatmap](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
-
 # Feature Engineering
 
 Label Encoder ```le_category = LabelEncoder()``` Converts labels to numbers\
@@ -196,6 +192,20 @@ Standardization is best when work with multiple features and we need to scale th
 If we have multiple fetures to train model , but we have large data set , data set is not healping train model , it will make model more effected as outlier . so thus we use Feature selection techniquies to redues the dimenstionality ,and have selected features to trin model.
 
 Refer : [Link](https://www.geeksforgeeks.org/machine-learning/feature-selection-techniques-in-machine-learning/) 
+
+Correlation matrix  heatmap
+A correlation heatmap is a visual graphic that shows how each variable in the dataset are correlated to one another.\
+-1 signifies zero correlation, while 1 signifies a perfect correlation.
+For more information on correlation read [Correlation Heatmap](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
+
+In order to plot , we need to convert the all the features into numeric 
+
+```python
+plt.figure(figsize=(12, 12)) 
+correlation_matrix = dummy_df.corr()
+sns.heatmap(correlation_matrix, annot=True)
+plt.show()
+```
 
 
 The Chi-Square (χ²) Test is a statistical test used to check if there is a relationship between two categorical variables.
