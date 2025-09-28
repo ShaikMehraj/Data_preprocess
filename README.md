@@ -151,6 +151,12 @@ Take out on above article :
 * Label encoding is best for Ordinal categorical data.
 * Dummies encoding is best for when need to keep lighter and removes a duplicate category in each categorical variable.
 
+
+With pandas package we can implement dummies or one hot encoding , ```python drop_first=True ``` is for Dummies , ```python drop_first=False ``` is for One hot encoding.
+```python
+dummy_df = pd.get_dummies(df, prefix={'gender':'gender'},drop_first=True, dtype=int)
+```
+
 # Binning
 
 Binning is the process of grouping or categorizing continuous data into smaller, discrete sets called **bins** or **buckets**. This technique is widely used in data mining and machine learning to convert continuous variables into categorical ones, such as turning age into **"age ranges"**. Binning can be applied to both numerical and categorical variables, and its primary purpose is to simplify the data and make it more manageable for analysis. \
