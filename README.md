@@ -167,6 +167,42 @@ Take out on above article :
 Binning is the process of grouping or categorizing continuous data into smaller, discrete sets called **bins** or **buckets**. This technique is widely used in data mining and machine learning to convert continuous variables into categorical ones, such as turning age into **"age ranges"**. Binning can be applied to both numerical and categorical variables, and its primary purpose is to simplify the data and make it more manageable for analysis. \
 To get a good idea on binning read the article [Binning in Data mining](https://www.scaler.com/topics/binning-in-data-mining/)
 
+# Feature scaling
+Feature scaling ensures that numerical features lie within a standardized range, preventing some features from dominating the learning process due to their larger values.
+
+
+
+Normalization : normalization refers to the process of adjusting values measured on different scales to a common scale. 
+
+Types of normalization
+Min-max normalization
+With min-max normalization, we might rescale the sizes of the houses to fit within a range of 0 to 1.is useful when you want to preserve the relative size of the values while simplifying the data. 
+Log normalization
+Log normalization is another normalization technique. By using log normalization, we apply a logarithmic transformation to the range of values.However, it may not work well with negative or zero values.
+Decimal scaling
+is useful when you want to preserve the relative size of the values while simplifying the data.
+Z-score normalization is useful when you want to compare data points across different datasets or when you want to identify outliers. 
+Mean normalization (mean-centering)
+Mean normalization, in this context, would involve adjusting the house prices by subtracting the average price from each range value.
+
+What is Standardization?
+While normalization scales features to a specific range, standardization, which is also called z-score scaling, transforms data to have a mean of 0 and a standard deviation of 1. This process adjusts the feature values by subtracting the mean and dividing by the standard deviation. You might have heard of ‘centering and scaling’ data. Well, standardization refers to the same thing: first centering, then scaling.
+
+Gradient-based Algorithms: Support Vector Machine (SVM) requires standardized data for optimal performance. While models like linear regression and logistic regression do not assume standardization
+Dimensionality Reduction: Standardization is in dimensionality reduction techniques like PCA because PCA identifies the direction where the variance in the data is maximized. Mean normalization alone is not sufficient because PCA considers both the mean and variance, and different feature scales would distort the analysis.
+
+Use cases and [differnce](https://www.datacamp.com/tutorial/normalization-vs-standardization) 
+Normalization is widely used in distance-based algorithms like k-Nearest Neighbors (k-NN), where features must be on the same scale to ensure accuracy in distance calculations. 
+Standardization, on the other hand, is vital for gradient-based algorithms such as Support Vector Machines (SVM) and is frequently applied in dimensionality reduction techniques like PCA, where maintaining the correct feature variance is important.
+
+My observation or take out:
+Normalization is best when we work with single Feature , along with removing the outliers.(Better works with Image normalizations)
+Standardization is best when work with multiple features and we need to scale them and applie PCA for dimentsionalty reduction .(they are less effected by outliers, but it will effect beacuse they do not represt original values)
+
+# PCA
+
+
+
 # Pipeline
 
 An ML pipeline automates and standardizes a series of steps in the machine learning workflow, from data collection and preprocessing to model training, deployment, and monitoring, creating a repeatable and scalable process
