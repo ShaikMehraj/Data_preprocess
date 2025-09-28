@@ -98,7 +98,7 @@ A correlation heatmap is a visual graphic that shows how each variable in the da
 -1 signifies zero correlation, while 1 signifies a perfect correlation.
 For more information on correlation read [Correlation Heatmap](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
 
-# Feature Eng
+# Feature Engineering
 
 Label Encoder ```le_category = LabelEncoder()``` Converts labels to numbers\
 ex:\
@@ -140,9 +140,9 @@ Cons:
 To know more about one-hot encoding please read [Encoding Categorical Variables](https://towardsdatascience.com/encoding-categorical-variables-one-hot-vs-dummy-encoding-6d5b9c46e2db/)
 
 Take out on above article : 
-One-Hot Encoding is best for Nominla cattogorical data.
-Label encoding is best for Ordinal cattogorical data.
-Dummies encoding is best for when need to keep lighter and removes a duplicate category in each categorical variable.
+* One-Hot Encoding is best for Nominla cattogorical data.
+* Label encoding is best for Ordinal cattogorical data.
+* Dummies encoding is best for when need to keep lighter and removes a duplicate category in each categorical variable.
 
 # Binning
 
