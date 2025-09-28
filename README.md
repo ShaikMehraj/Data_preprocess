@@ -137,13 +137,6 @@ So you get the average product rating per category.
 * Index = product category
 * Value = average rating of that category
 
-
-The Chi-Square (χ²) Test is a statistical test used to check if there is a relationship between two categorical variables.
-The test gives you a Chi-Square statistic and a p-value:
-* p < 0.05 → significant relationship (variables are dependent).
-* p ≥ 0.05 → no significant relationship (variables are independent).
-
-
 Inverse transform the data
 This reverses the encoding and converts the numbers back into their original string labels.
 
@@ -203,6 +196,13 @@ Standardization is best when work with multiple features and we need to scale th
 If we have multiple fetures to train model , but we have large data set , data set is not healping train model , it will make model more effected as outlier . so thus we use Feature selection techniquies to redues the dimenstionality ,and have selected features to trin model.
 
 Refer : [Link](https://www.geeksforgeeks.org/machine-learning/feature-selection-techniques-in-machine-learning/) 
+
+
+The Chi-Square (χ²) Test is a statistical test used to check if there is a relationship between two categorical variables.
+The test gives you a Chi-Square statistic and a p-value:
+* p < 0.05 → significant relationship (variables are dependent).
+* p ≥ 0.05 → no significant relationship (variables are independent).
+
 
 # PCA
 
