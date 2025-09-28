@@ -199,6 +199,11 @@ My observation or take out:
 Normalization is best when we work with single Feature , along with removing the outliers.(Better works with Image normalizations)
 Standardization is best when work with multiple features and we need to scale them and applie PCA for dimentsionalty reduction .(they are less effected by outliers, but it will effect beacuse they do not represt original values)
 
+# Feature Selection Techniques
+If we have multiple fetures to train model , but we have large data set , data set is not healping train model , it will make model more effected as outlier . so thus we use Feature selection techniquies to redues the dimenstionality ,and have selected features to trin model.
+
+Refer : [Link](https://www.geeksforgeeks.org/machine-learning/feature-selection-techniques-in-machine-learning/) 
+
 # PCA
 
 
