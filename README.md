@@ -103,7 +103,7 @@ Label Encoder ```le_category = LabelEncoder()``` Converts labels to numbers\
 ex:\
 Electronics → 0  
 Clothing    → 1  
-Books       → 2
+Books       →D 2
 
 ```python
 # Calculate mean sales by product category
@@ -127,3 +127,34 @@ The test gives you a Chi-Square statistic and a p-value:
 
 Inverse transform the data
 This reverses the encoding and converts the numbers back into their original string labels.
+
+
+# One-Hot Encoding
+While One-Hot Encoding creates a new binary column for each category, best for nominal data (where order doesn't matter), allows the model to learn separate weights for each category, leading to more nuanced decisions.
+
+Cons: 
+* Significantly increases the dimensionality of the dataset, especially with many unique categories. 
+* Can lead to increased memory consumption and slower training times. 
+
+To know more about one-hot encoding please read [Encoding Categorical Variables](https://towardsdatascience.com/encoding-categorical-variables-one-hot-vs-dummy-encoding-6d5b9c46e2db/)
+
+Take out on above article : 
+* One-Hot Encoding is best for Nominla cattogorical data.
+* Label encoding is best for Ordinal cattogorical data.
+* Dummies encoding is best for when need to keep lighter and removes a duplicate category in each categorical variable.
+
+# Binning
+
+Binning is the process of grouping or categorizing continuous data into smaller, discrete sets called "bins" or "buckets". This technique is widely used in data mining and machine learning to convert continuous variables into categorical ones, such as turning age into "age ranges".
+
+# Pipeline
+
+An ML pipeline automates and standardizes a series of steps in the machine learning workflow, from data collection and preprocessing to model training, deployment, and monitoring, creating a repeatable and scalable process
+
+```python
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(SimpleImputer(strategy='mean'),
+                      PolynomialFeatures(degree=2),
+                      LinearRegression())
+```
