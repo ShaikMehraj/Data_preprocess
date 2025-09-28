@@ -122,7 +122,7 @@ Label Encoder ```le_category = LabelEncoder()``` Converts labels to numbers\
 ex:\
 Electronics → 0  
 Clothing    → 1  
-Books       → 2
+Books       →D 2
 
 ```python
 # Calculate mean sales by product category
@@ -158,13 +158,14 @@ Cons:
 To know more about one-hot encoding please read [Encoding Categorical Variables](https://towardsdatascience.com/encoding-categorical-variables-one-hot-vs-dummy-encoding-6d5b9c46e2db/)
 
 Take out on above article : 
-* One-Hot Encoding is best for Nominla cattogorical data.
-* Label encoding is best for Ordinal cattogorical data.
+* One-Hot Encoding is best for nominal categorical data.
+* Label encoding is best for Ordinal categorical data.
 * Dummies encoding is best for when need to keep lighter and removes a duplicate category in each categorical variable.
 
 # Binning
 
-Binning is the process of grouping or categorizing continuous data into smaller, discrete sets called "bins" or "buckets". This technique is widely used in data mining and machine learning to convert continuous variables into categorical ones, such as turning age into "age ranges".
+Binning is the process of grouping or categorizing continuous data into smaller, discrete sets called **bins** or **buckets**. This technique is widely used in data mining and machine learning to convert continuous variables into categorical ones, such as turning age into **"age ranges"**. Binning can be applied to both numerical and categorical variables, and its primary purpose is to simplify the data and make it more manageable for analysis. \
+To get a good idea on binning read the article [Binning in Data mining](https://www.scaler.com/topics/binning-in-data-mining/)
 
 # Pipeline
 
