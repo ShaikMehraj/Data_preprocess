@@ -100,63 +100,97 @@ For more information on correlation read [Correlation Heatmap](https://medium.co
 
 # Feature Engineering
 
-Label Encoder ```le_category = LabelEncoder()``` Converts labels to numbers\
-ex:\
-Electronics → 0  
-Clothing    → 1  
-Books       →D 2
+Feature engineering is the process of transforming the raw data into relevant information for use by machine learning models. To put it in other words, feature engineering is the process of **creating predictive model features**. Because model performance largely rests on the quality of data used during training, feature engineering is a crucial pre-processing technique that requires selecting the most relevant aspects of raw training data for both the predictive task and model type under consideration. To understand about feature engineering first we need to understand the types of features that are present in machine learning.
+1. **Numerical Features**
+    - As the name indicates, numerical features are those that are representing measurable quantities. These features can be continous or discrete.
+    - Few examples of numerical features are age, height, mobile number etc.
+2. **Categorical Features**
+    - Categorical features are those that represnet the data which can be placed in to a category. These features may contain nominal or ordinal data.
+    - Some known examples of categorical features are gender, country, month of birth, eye color etc.
+3. **Text Features**
+    - Text features are those that contain string data. These features can be further classified into unstructured and structured text data.
+    - Some examples of text features are customer reviews, comments, tweets etc.
+4. **Time-series Features**
+    - Time-series features are those data instances that are collected over a time duration. These features are time-dependent are are mostly used in forecasting problems or trend analysis.
 
-```python
-# Calculate mean sales by product category
-grouped_df = df.groupby('category')['rating'].mean()
-Print mean sales by product category
-print(grouped_df)
-```
-For each category group, it calculates the average (mean) of the rating column.
-So you get the average product rating per category.
+Although there are many feature engineering techniqies, there isn't one method universally accepted and used. The selection of feature engineering method solely depends of the dataset and the problem statement to be solved.\
+Here are some of the common techniques used in feature engineering.
 
-```grouped_df``` will be a Series where:
-* Index = product category
-* Value = average rating of that category
-
-
-The Chi-Square (χ²) Test is a statistical test used to check if there is a relationship between two categorical variables.
-The test gives you a Chi-Square statistic and a p-value:
-* p < 0.05 → significant relationship (variables are dependent).
-* p ≥ 0.05 → no significant relationship (variables are independent).
-
-
-Inverse transform the data
-This reverses the encoding and converts the numbers back into their original string labels.
-
-
-# One-Hot Encoding
+## One-Hot Encoding
 While One-Hot Encoding creates a new binary column for each category, best for nominal data (where order doesn't matter), allows the model to learn separate weights for each category, leading to more nuanced decisions.
 
-Cons: 
-* Significantly increases the dimensionality of the dataset, especially with many unique categories. 
-* Can lead to increased memory consumption and slower training times. 
+```python
+import pandas as pd
 
-To know more about one-hot encoding please read [Encoding Categorical Variables](https://towardsdatascience.com/encoding-categorical-variables-one-hot-vs-dummy-encoding-6d5b9c46e2db/)
+data = {'Color': ['Red', 'Blue', 'Green', 'Blue', 'Orange']}
+df = pd.DataFrame(data)
 
-Take out on above article : 
-* One-Hot Encoding is best for Nominla cattogorical data.
-* Label encoding is best for Ordinal cattogorical data.
-* Dummies encoding is best for when need to keep lighter and removes a duplicate category in each categorical variable.
+df_encoded = pd.get_dummies(df, columns=['Color'], prefix='color')
 
-# Binning
+print(df_encoded)
+```
+```
+   color_Blue    color_Green  color_Orange   color_Red
+0       False        False         False       True
+1        True        False         False      False
+2       False         True         False      False
+3        True        False         False      False
+4       False        False          True      False
+```
 
-Binning is the process of grouping or categorizing continuous data into smaller, discrete sets called **bins** or **buckets**. This technique is widely used in data mining and machine learning to convert continuous variables into categorical ones, such as turning age into **"age ranges"**. Binning can be applied to both numerical and categorical variables, and its primary purpose is to simplify the data and make it more manageable for analysis. \
-To get a good idea on binning read the article [Binning in Data mining](https://www.scaler.com/topics/binning-in-data-mining/)
+### Disadvantages of One-Hot Encoding: 
+* This Significantly increases the dimensionality of the dataset, especially with many unique categories. 
+* Using One-How Encoding can lead to increased memory consumption and slower training times.
 
-# Pipeline
+To know more about one-hot encoding method please do read [What Is One-Hot Encoding](https://www.datacamp.com/tutorial/one-hot-encoding-python-tutorial)
 
-An ML pipeline automates and standardizes a series of steps in the machine learning workflow, from data collection and preprocessing to model training, deployment, and monitoring, creating a repeatable and scalable process
+## Binning
+
+Binning is the process of grouping or categorising continuous data into smaller, discrete sets called **bins** or **buckets**. This technique is widely used in data mining and machine learning to convert continuous variables into categorical ones, such as turning age into **"age ranges"**. Binning can be applied to both numerical and categorical variables, and its primary purpose is to simplify the data and make it more manageable for analysis.
 
 ```python
-from sklearn.pipeline import make_pipeline
+import pandas as pd
 
-model = make_pipeline(SimpleImputer(strategy='mean'),
-                      PolynomialFeatures(degree=2),
-                      LinearRegression())
+data = {'Age': [23.5, 45, 18, 34, 67, 50, 21]}
+df = pd.DataFrame(data)
+
+bins = [0, 20, 40, 60, 100]
+labels = ['0-20', '21-40', '41-60', '61+']
+
+df['Age_Range'] = pd.cut(df['Age'], bins=bins, labels=labels, right=False)
+
+print(df)
+```
+```
+    Age Age_Range
+0  23.5     21-40
+1  45.0     41-60
+2  18.0      0-20
+3  34.0     21-40
+4  67.0       61+
+5  50.0     41-60
+6  21.0     21-40
+```
+
+To get a good idea on binning read the article [Binning in Data mining](https://www.scaler.com/topics/binning-in-data-mining/)
+
+
+## Feature Splitting:
+Feature spiltting is the process of beraking down a complex single feature into multiple simpler features.
+```python
+import pandas as pd
+
+data = {'Full_Address': [
+    '74 st, Oklahoma, 77724', '456 Oak Rd, Tennessee , 442640']}
+df = pd.DataFrame(data)
+
+df[['Street', 'City', 'Zipcode']] = df['Full_Address'].str.extract(
+    r'([0-9]+\s[\w\s]+),\s([\w\s]+),\s(\d+)')
+
+print(df)
+```
+```
+                    Full_Address      Street        City   Zipcode
+0          74 st, Oklahoma, 77724       74 st    Oklahoma   77724
+1  456 Oak Rd, Tennessee , 442640  456 Oak Rd  Tennessee   442640
 ```
