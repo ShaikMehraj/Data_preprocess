@@ -204,7 +204,7 @@ If we have multiple fetures to train model , but we have large data set , data s
 
 Refer : [Feature Selection Techniques in Machine Learning](https://www.geeksforgeeks.org/machine-learning/feature-selection-techniques-in-machine-learning/) 
 
-## Correlation matrix heatmap
+## Correlation Matrix Heatmap
 A correlation heatmap is a visual graphic that shows how each variable in the dataset are correlated to one another.\
 -1 signifies zero correlation, while 1 signifies a perfect correlation.\
 For more information on correlation read [Correlation Heatmap](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
