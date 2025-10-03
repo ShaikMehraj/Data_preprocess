@@ -167,41 +167,46 @@ Feature scaling ensures that numerical features lie within a standardized range,
 
 
 
-Normalization : normalization refers to the process of adjusting values measured on different scales to a common scale. 
+# Normilazation
+normilazation refers to the process of adjusting values measured on different scales to a common scale. 
 
-Types of normalization
-Min-max normalization
-With min-max normalization, we might rescale the sizes of the houses to fit within a range of 0 to 1.is useful when you want to preserve the relative size of the values while simplifying the data. 
-Log normalization
-Log normalization is another normalization technique. By using log normalization, we apply a logarithmic transformation to the range of values.However, it may not work well with negative or zero values.
-Decimal scaling
+## Types of normilazation
+1. **Min-Max normilazation:**
+With min-max normilazation, we might rescale the sizes of the houses to fit within a range of 0 to 1.is useful when you want to preserve the relative size of the values while simplifying the data.
+
+1. **Log normilazation:**
+Log normilazation is another normilazation technique. By using log normilazation, we apply a logarithmic transformation to the range of values.However, it may not work well with negative or zero values.
+
+1. **Decimal scaling:**
 is useful when you want to preserve the relative size of the values while simplifying the data.
-Z-score normalization is useful when you want to compare data points across different datasets or when you want to identify outliers. 
-Mean normalization (mean-centering)
-Mean normalization, in this context, would involve adjusting the house prices by subtracting the average price from each range value.
+Z-score normilazation is useful when you want to compare data points across different datasets or when you want to identify outliers. 
 
-What is Standardization?
-While normalization scales features to a specific range, standardization, which is also called z-score scaling, transforms data to have a mean of 0 and a standard deviation of 1. This process adjusts the feature values by subtracting the mean and dividing by the standard deviation. You might have heard of ‘centering and scaling’ data. Well, standardization refers to the same thing: first centering, then scaling.
+1. **Mean normilazation (mean-centering):**
+Mean normilazation, in this context, would involve adjusting the house prices by subtracting the average price from each range value.
 
-Gradient-based Algorithms: Support Vector Machine (SVM) requires standardized data for optimal performance. While models like linear regression and logistic regression do not assume standardization
-Dimensionality Reduction: Standardization is in dimensionality reduction techniques like PCA because PCA identifies the direction where the variance in the data is maximized. Mean normalization alone is not sufficient because PCA considers both the mean and variance, and different feature scales would distort the analysis.
+## What is Standardization?
+While normilazation scales features to a specific range, standardization, which is also called **z-score scaling**, transforms data to have a mean of 0 and a standard deviation of 1. This process adjusts the feature values by subtracting the mean and dividing by the standard deviation. You might have heard of ‘centering and scaling’ data. Well, standardization refers to the same thing: first centering, then scaling.
 
-Use cases and [differnce](https://www.datacamp.com/tutorial/normalization-vs-standardization) 
-Normalization is widely used in distance-based algorithms like k-Nearest Neighbors (k-NN), where features must be on the same scale to ensure accuracy in distance calculations. 
+**Gradient-based Algorithms:** Support Vector Machine (SVM) requires standardized data for optimal performance. While models like linear regression and logistic regression do not assume standardization
+
+**Dimensionality Reduction:** Standardization is in dimensionality reduction techniques like PCA because PCA identifies the direction where the variance in the data is maximized. Mean normilazation alone is not sufficient because PCA considers both the mean and variance, and different feature scales would distort the analysis.
+
+Use cases and [differnce](https://www.datacamp.com/tutorial/normilazation-vs-standardization) 
+normilazation is widely used in distance-based algorithms like k-Nearest Neighbors (k-NN), where features must be on the same scale to ensure accuracy in distance calculations. 
 Standardization, on the other hand, is vital for gradient-based algorithms such as Support Vector Machines (SVM) and is frequently applied in dimensionality reduction techniques like PCA, where maintaining the correct feature variance is important.
 
-My observation or take out:
-Normalization is best when we work with single Feature , along with removing the outliers.(Better works with Image normalizations)
+## My observation or take out:
+normilazation is best when we work with single Feature , along with removing the outliers.(Better works with Image normilazations)
 Standardization is best when work with multiple features and we need to scale them and applie PCA for dimentsionalty reduction .(they are less effected by outliers, but it will effect beacuse they do not represt original values)
 
 # Feature Selection Techniques
-If we have multiple fetures to train model , but we have large data set , data set is not healping train model , it will make model more effected as outlier . so thus we use Feature selection techniquies to redues the dimenstionality ,and have selected features to trin model.
+If we have multiple fetures to train model , but we have large data set , data set is not healping train model , it will make model more effected as outlier . so thus we use Feature selection techniquies to redues the dimenstionality ,and have selected features to train model.
 
-Refer : [Link](https://www.geeksforgeeks.org/machine-learning/feature-selection-techniques-in-machine-learning/) 
+Refer : [Feature Selection Techniques in Machine Learning](https://www.geeksforgeeks.org/machine-learning/feature-selection-techniques-in-machine-learning/) 
 
-Correlation matrix  heatmap
+## Correlation matrix heatmap
 A correlation heatmap is a visual graphic that shows how each variable in the dataset are correlated to one another.\
--1 signifies zero correlation, while 1 signifies a perfect correlation.
+-1 signifies zero correlation, while 1 signifies a perfect correlation.\
 For more information on correlation read [Correlation Heatmap](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
 
 In order to plot , we need to convert the all the features into numeric 
