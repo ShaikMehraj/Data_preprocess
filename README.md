@@ -223,7 +223,8 @@ The Chi-Square (χ²) Test is a statistical test used to check if there is a rel
 The test gives you a Chi-Square statistic and a p-value:
 * p < 0.05 → significant relationship (variables are dependent).
 * p ≥ 0.05 → no significant relationship (variables are independent).
-
+  
+This score can be used to select the n_features features with the highest values for the test chi-squared statistic from X, which must contain only non-negative integer feature values such as booleans or frequencies (e.g., term counts in document classification), relative to the classes.
 
 # PCA
 
