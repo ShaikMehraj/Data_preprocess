@@ -11,6 +11,7 @@ Performing with existing Blog, Refer : [Amazon EDA Dataset](https://www.kaggle.c
 4. **Seaborn:** Enhanced data visualization and statistical graphics
 6. **Scikit-learn:** For predective data analysis
 5. **Scipy:** Scientific computing and advanced mathematical operations
+6. **scikit-learn** The sklearn library contains a lot of efficient tools for machine learning and statistical modeling including classification, regression, clustering and dimensionality reduction.
 
 
 
@@ -44,6 +45,11 @@ For example\
 Input : "₹1,299"\
 output :  1299.0
 
+concating the Date of birth columns
+```python
+df['DOB'] = df.apply(lambda x:'%s-%s-%s' % (x['dob_day'],x['dob_month'],x['dob_year']),axis=1)
+df['DOB'] = pd.to_datetime(df['DOB']) # Changing the data type
+```
 
 Finding un-usual string in rating column
 
@@ -69,6 +75,18 @@ df.isnull().sum().sort_values(ascending = False)
 ```  
 This line counts the missing values in each column of the DataFrame and sorts the columns from most to least missing values.
 
+```python
+for x in df.index:
+  if df.loc[x, "age"] > 80:
+    df.drop(x, inplace = True)
+```
+Above line of code will remove the or delete the rows which has certain values , such as outliers 
+
+concating the Date of birth columns
+```python
+df['DOB'] = df.apply(lambda x:'%s-%s-%s' % (x['dob_day'],x['dob_month'],x['dob_year']),axis=1)
+df['DOB'] = pd.to_datetime(df['DOB']) # Changing the data type
+```
 
 ```python
 # Filling missing values with median value
@@ -94,16 +112,13 @@ plt.show()
 ```
 
 
-A correlation heatmap is a visual graphic that shows how each variable in the dataset are correlated to one another.\
--1 signifies zero correlation, while 1 signifies a perfect correlation.
-For more information on correlation read [Correlation Heatmap](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
-
+# Feature Engineering
 
 Label Encoder ```le_category = LabelEncoder()``` Converts labels to numbers\
 ex:\
 Electronics → 0  
 Clothing    → 1  
-Books       → 2
+Books       →D 2
 
 ```python
 # Calculate mean sales by product category
@@ -118,6 +133,91 @@ So you get the average product rating per category.
 * Index = product category
 * Value = average rating of that category
 
+Inverse transform the data
+This reverses the encoding and converts the numbers back into their original string labels.
+
+
+# One-Hot Encoding
+While One-Hot Encoding creates a new binary column for each category, best for nominal data (where order doesn't matter), allows the model to learn separate weights for each category, leading to more nuanced decisions.
+
+Cons: 
+* Significantly increases the dimensionality of the dataset, especially with many unique categories. 
+* Can lead to increased memory consumption and slower training times. 
+
+To know more about one-hot encoding please read [Encoding Categorical Variables](https://towardsdatascience.com/encoding-categorical-variables-one-hot-vs-dummy-encoding-6d5b9c46e2db/)
+
+Take out on above article : 
+* One-Hot Encoding is best for nominal categorical data.
+* Label encoding is best for Ordinal categorical data.
+* Dummies encoding is best for when need to keep lighter and removes a duplicate category in each categorical variable.
+
+
+With pandas package we can implement dummies or one hot encoding , ```python drop_first=True ``` is for Dummies , ```python drop_first=False ``` is for One hot encoding.
+```python
+dummy_df = pd.get_dummies(df, prefix={'gender':'gender'},drop_first=True, dtype=int)
+```
+
+# Binning
+
+Binning is the process of grouping or categorizing continuous data into smaller, discrete sets called **bins** or **buckets**. This technique is widely used in data mining and machine learning to convert continuous variables into categorical ones, such as turning age into **"age ranges"**. Binning can be applied to both numerical and categorical variables, and its primary purpose is to simplify the data and make it more manageable for analysis. \
+To get a good idea on binning read the article [Binning in Data mining](https://www.scaler.com/topics/binning-in-data-mining/)
+
+# Feature scaling
+Feature scaling ensures that numerical features lie within a standardized range, preventing some features from dominating the learning process due to their larger values.
+
+
+
+# Normilazation
+normilazation refers to the process of adjusting values measured on different scales to a common scale. 
+
+## Types of normilazation
+1. **Min-Max normilazation:**
+With min-max normilazation, we might rescale the sizes of the houses to fit within a range of 0 to 1.is useful when you want to preserve the relative size of the values while simplifying the data.
+
+1. **Log normilazation:**
+Log normilazation is another normilazation technique. By using log normilazation, we apply a logarithmic transformation to the range of values.However, it may not work well with negative or zero values.
+
+1. **Decimal scaling:**
+is useful when you want to preserve the relative size of the values while simplifying the data.
+Z-score normilazation is useful when you want to compare data points across different datasets or when you want to identify outliers. 
+
+1. **Mean normilazation (mean-centering):**
+Mean normilazation, in this context, would involve adjusting the house prices by subtracting the average price from each range value.
+
+## What is Standardization?
+While normilazation scales features to a specific range, standardization, which is also called **z-score scaling**, transforms data to have a mean of 0 and a standard deviation of 1. This process adjusts the feature values by subtracting the mean and dividing by the standard deviation. You might have heard of ‘centering and scaling’ data. Well, standardization refers to the same thing: first centering, then scaling.
+
+**Gradient-based Algorithms:** Support Vector Machine (SVM) requires standardized data for optimal performance. While models like linear regression and logistic regression do not assume standardization
+
+**Dimensionality Reduction:** Standardization is in dimensionality reduction techniques like PCA because PCA identifies the direction where the variance in the data is maximized. Mean normilazation alone is not sufficient because PCA considers both the mean and variance, and different feature scales would distort the analysis.
+
+Use cases and [differnce](https://www.datacamp.com/tutorial/normilazation-vs-standardization) 
+normilazation is widely used in distance-based algorithms like k-Nearest Neighbors (k-NN), where features must be on the same scale to ensure accuracy in distance calculations. 
+Standardization, on the other hand, is vital for gradient-based algorithms such as Support Vector Machines (SVM) and is frequently applied in dimensionality reduction techniques like PCA, where maintaining the correct feature variance is important.
+
+## My observation or take out:
+normilazation is best when we work with single Feature , along with removing the outliers.(Better works with Image normilazations)
+Standardization is best when work with multiple features and we need to scale them and applie PCA for dimentsionalty reduction .(they are less effected by outliers, but it will effect beacuse they do not represt original values)
+
+# Feature Selection Techniques
+If we have multiple fetures to train model , but we have large data set , data set is not healping train model , it will make model more effected as outlier . so thus we use Feature selection techniquies to redues the dimenstionality ,and have selected features to train model.
+
+Refer : [Feature Selection Techniques in Machine Learning](https://www.geeksforgeeks.org/machine-learning/feature-selection-techniques-in-machine-learning/) 
+
+## Correlation Matrix Heatmap
+A correlation heatmap is a visual graphic that shows how each variable in the dataset are correlated to one another.\
+-1 signifies zero correlation, while 1 signifies a perfect correlation.\
+For more information on correlation read [Correlation Heatmap](https://medium.com/5-minute-eda/5-minute-eda-correlation-heatmap-b57bbb7bae14)
+
+In order to plot , we need to convert the all the features into numeric 
+
+```python
+plt.figure(figsize=(12, 12)) 
+correlation_matrix = dummy_df.corr()
+sns.heatmap(correlation_matrix, annot=True)
+plt.show()
+```
+
 
 The Chi-Square (χ²) Test is a statistical test used to check if there is a relationship between two categorical variables.
 The test gives you a Chi-Square statistic and a p-value:
@@ -126,5 +226,18 @@ The test gives you a Chi-Square statistic and a p-value:
   
 This score can be used to select the n_features features with the highest values for the test chi-squared statistic from X, which must contain only non-negative integer feature values such as booleans or frequencies (e.g., term counts in document classification), relative to the classes.
 
-Inverse transform the data
-This reverses the encoding and converts the numbers back into their original string labels.
+# PCA
+
+
+
+# Pipeline
+
+An ML pipeline automates and standardizes a series of steps in the machine learning workflow, from data collection and preprocessing to model training, deployment, and monitoring, creating a repeatable and scalable process
+
+```python
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(SimpleImputer(strategy='mean'),
+                      PolynomialFeatures(degree=2),
+                      LinearRegression())
+```
