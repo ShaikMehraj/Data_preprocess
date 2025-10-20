@@ -233,7 +233,21 @@ Corelation and covarience : https://www.youtube.com/watch?v=uW0TapQ6UQU
 
 take out from above video : even when the covarience seems have less differnce but actual corelation of variables can very low that it will not be effective in model.
 
+# Linear discriminant analysis 
+LDA is ostensibly similar to PCA in that it projects model data onto a new, lower dimensional space. While PCA produces new component variables meant to maximize data variance, LDA produces component variables primarily intended to maximize class difference in the data.
 
+
+Principal Component Analysis (PCA)
+Unsupervised
+Maximize variance
+Ignores class labels
+Dimensionality reduction, exploratory analysis
+
+Linear Discriminant Analysis (LDA)
+Supervised
+Class Labels
+Uses class labels
+Classification, feature selection for classification
 
 # Pipeline
 
