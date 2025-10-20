@@ -249,6 +249,19 @@ Class Labels
 Uses class labels
 Classification, feature selection for classification
 
+# Feature scaling
+Certain features have upper and lower bounds intrinsic to data that limits possible feature values, such as time-series data or age.While feature transformation transforms data from one type to another, feature scaling transforms data in terms of range and distribution, maintaining its original data type.
+
+2 types of Feature scaling
+
+Min-max scaling. Min-max scaling rescales all values for a given feature so that they fall between specified minimum and maximum values, often 0 and 1. Min-max scaling is calculated using the formula <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3898ae1f-d1db-49ac-b33b-cf2869a7d2e6" />
+
+Z-score scaling. Literature also refers to this as standardization and variance scaling. Whereas min-max scaling scales feature values to fit within designated minimum and maximum values, z-score scaling rescales features so that they have a shared standard deviation of 1 with a mean of 0. Z-score scaling is represented by the formula
+
+![Uploading image.png…]()
+
+
+
 # Pipeline
 
 An ML pipeline automates and standardizes a series of steps in the machine learning workflow, from data collection and preprocessing to model training, deployment, and monitoring, creating a repeatable and scalable process
