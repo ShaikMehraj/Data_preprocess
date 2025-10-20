@@ -231,6 +231,8 @@ Principal component analysis is a common feature extraction method that combines
 
 Corelation and covarience : https://www.youtube.com/watch?v=uW0TapQ6UQU
 
+take out from above video : even when the covarience seems have less differnce but actual corelation of variables can very low that it will not be effective in model.
+
 
 
 # Pipeline
