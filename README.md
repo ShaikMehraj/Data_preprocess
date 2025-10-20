@@ -229,6 +229,8 @@ This score can be used to select the n_features features with the highest values
 # PCA
 Principal component analysis is a common feature extraction method that combines and transforms a dataset’s original features to produce new features, called principal components. PCA is very effective for visualizing and exploring high-dimensional datasets, or data with many features, as it can easily identify trends, patterns, or outliers.PCA is a dimension reduction technique like linear discriminant analysis. In contrast to LDA, PCA is not limited to supervised learning tasks. For unsupervised learning tasks, this means PCA can reduce dimensions without having to consider class labels or categories. PCA is also closely related to factor analysis. They both reduce the number of dimensions or variables in a dataset while minimizing information loss.
 
+Corelation and covarience : https://www.youtube.com/watch?v=uW0TapQ6UQU
+
 
 
 # Pipeline
