@@ -261,6 +261,31 @@ Z-score scaling. Literature also refers to this as standardization and variance 
 
 
 
+# Feature selection
+
+Supervised feature selection methods
+
+1. Filter methods
+   Filter methods are a group of feature selection techniques that are solely concerned with the data itself and do not directly consider model performance optimization. Input variables are assessed independently against the target variable to determine which has the highest correlation.
+
+**Information gain**: Measures how important the presence or absence of a feature is in determining the target variable by the degree of entropy reduction. 
+
+**Mutual information**: Assesses the dependence between variables by measuring the information obtained about one through the other. 
+
+**Chi-square test**: Assesses the relationship between two categorical variables by comparing observed to expected values. 
+
+**Fisher’s score**: Uses derivatives to calculate the relative importance of each feature for classifying data. A higher score indicates greater influence. 
+
+**Pearson’s correlation coefficient**: Quantifies the relationship between two continuous variables with a score ranging from -1 to 1. 
+
+**Variance threshold**: Removes all features that fall under a minimum degree of variance because features with more variances are likely to contain more useful information. A related method is the mean absolute difference (MAD). 
+
+**Missing value ratio**: Calculates the percentages of instances in a dataset for which a certain feature is missing or has a null value. If too many instances are missing a feature, it is not likely to be useful. 
+
+**Dispersion ratio**: The ratio of variance to the mean value for a feature. Higher dispersion indicates more information. 
+
+**ANOVA (analysis of variance)**: Determines whether different feature values affect the value of the target variable.
+
 
 # Pipeline
 
