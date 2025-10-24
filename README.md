@@ -229,63 +229,186 @@ This score can be used to select the n_features features with the highest values
 # PCA
 Principal component analysis is a common feature extraction method that combines and transforms a dataset’s original features to produce new features, called principal components. PCA is very effective for visualizing and exploring high-dimensional datasets, or data with many features, as it can easily identify trends, patterns, or outliers.PCA is a dimension reduction technique like linear discriminant analysis. In contrast to LDA, PCA is not limited to supervised learning tasks. For unsupervised learning tasks, this means PCA can reduce dimensions without having to consider class labels or categories. PCA is also closely related to factor analysis. They both reduce the number of dimensions or variables in a dataset while minimizing information loss.
 
-Corelation and covarience : https://www.youtube.com/watch?v=uW0TapQ6UQU
+Before going furter please refer 
+[Corelation and covarience](https://youtu.be/uW0TapQ6UQU) from YouTube
 
-take out from above video : even when the covarience seems have less differnce but actual corelation of variables can very low that it will not be effective in model.
+Take out from above video :\
+Even when the covarience seems have less differnce but actual corelation of variables can very low that it will not be effective in model.
 
-# Linear discriminant analysis 
+# Linear discriminant analysis (LDA)
 LDA is ostensibly similar to PCA in that it projects model data onto a new, lower dimensional space. While PCA produces new component variables meant to maximize data variance, LDA produces component variables primarily intended to maximize class difference in the data.
 
 
-Principal Component Analysis (PCA)
-Unsupervised
-Maximize variance
-Ignores class labels
-Dimensionality reduction, exploratory analysis
+## Principal Component Analysis (PCA)
+* Unsupervised
+* Maximize variance
+* Ignores class labels
+* Dimensionality reduction, exploratory analysis
 
-Linear Discriminant Analysis (LDA)
-Supervised
-Class Labels
-Uses class labels
-Classification, feature selection for classification
+## Linear Discriminant Analysis (LDA)
+* Supervised
+* Class Labels
+* Uses class labels
+* Classification, feature selection for classification
 
 # Feature scaling
-Certain features have upper and lower bounds intrinsic to data that limits possible feature values, such as time-series data or age.While feature transformation transforms data from one type to another, feature scaling transforms data in terms of range and distribution, maintaining its original data type.
+Certain features have upper and lower bounds intrinsic to data that limits possible feature values, such as time-series data or age. While feature transformation transforms data from one type to another, feature scaling transforms data in terms of range and distribution, maintaining its original data type. Feature scaling is essential when features have different units or scales, as it ensures that no single feature dominates the learning process due to its larger values. Feature scaling is done using two primary techniques: **min-max scaling** and **z-score scaling**.
 
-2 types of Feature scaling
+## Min-max scaling.
+Min-max scaling rescales all values for a given feature so that they fall between specified minimum and maximum values, often 0 and 1. Min-max scaling is calculated using the formula
+$$
+\tilde{x} = \frac{x - \min(x)}{\max(x) - \min(x)}
+$$
 
-Min-max scaling. Min-max scaling rescales all values for a given feature so that they fall between specified minimum and maximum values, often 0 and 1. Min-max scaling is calculated using the formula <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3898ae1f-d1db-49ac-b33b-cf2869a7d2e6" />
-
-Z-score scaling. Literature also refers to this as standardization and variance scaling. Whereas min-max scaling scales feature values to fit within designated minimum and maximum values, z-score scaling rescales features so that they have a shared standard deviation of 1 with a mean of 0. Z-score scaling is represented by the formula
- <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d220f938-792e-4bca-9348-a5fc5347d4a0" />
-
-
+## Z-score scaling
+Literature also refers to this as standardization and variance scaling. Whereas min-max scaling scales feature values to fit within designated minimum and maximum values, z-score scaling rescales features so that they have a shared standard deviation of 1 with a mean of 0.\
+ Z-score scaling is represented by the following formula
+$$
+\tilde{x} = \frac{x - mean(x)}{\sqrt(var(x))}
+$$
 
 # Feature selection
 
-Supervised feature selection methods
+Feature selection is the process of selecting the most relevant features of a dataset to use when building and training a machine learning model. By reducing the feature space to a selected subset, feature selection improves AI model performance while lowering its computational demands.
 
-1. Filter methods
-   Filter methods are a group of feature selection techniques that are solely concerned with the data itself and do not directly consider model performance optimization. Input variables are assessed independently against the target variable to determine which has the highest correlation.
+A "feature" refers to an individual measurable property or characteristic of a data point: a specific attribute of the data that helps describe the phenomenon being observed. A dataset about housing might have features such as “number of bedrooms” and “year of construction.” 
 
-**Information gain**: Measures how important the presence or absence of a feature is in determining the target variable by the degree of entropy reduction. 
+Feature selection is part of the feature engineering process, in which data scientists prepare data and curate a feature set for machine learning algorithms. Feature selection is the portion of feature engineering concerned with choosing the features to use for the model.
 
-**Mutual information**: Assesses the dependence between variables by measuring the information obtained about one through the other. 
+## Supervised Feature Selection Methods
+Supervised feature selection methods are applied to labeled datasets, where datapoints have known target values. These methods are designed to identify features that have the strongest relationships with the target variable, thereby enhancing supervied learning models sush as classification and regression.
 
-**Chi-square test**: Assesses the relationship between two categorical variables by comparing observed to expected values. 
+## Filter methods
+Filter methods are a group of feature selection techniques that are solely concerned with the data itself and do not directly consider model performance optimization. Input variables are assessed independently against the target variable to determine which has the highest correlation.
 
-**Fisher’s score**: Uses derivatives to calculate the relative importance of each feature for classifying data. A higher score indicates greater influence. 
+### Information gain
+Information gain shows how important the presence or absence of a feature is in determining the target variable by the degree of entropy reduction. To put it simply information gain helps us understand how much a particular feature contributes to making accurate predictions in a decision tree. Features with higher Information Gain are considered more informative and are preferred for splitting the dataset, as they lead to nodes with more homogenous classes.
 
-**Pearson’s correlation coefficient**: Quantifies the relationship between two continuous variables with a score ranging from -1 to 1. 
+```python
+from sklearn.feature_selection import mutual_info_classif
+import matplotlib.pyplot as plt
+%matplotlib inline
 
-**Variance threshold**: Removes all features that fall under a minimum degree of variance because features with more variances are likely to contain more useful information. A related method is the mean absolute difference (MAD). 
+importances = mutual_info_classif(X, Y)
+feat_importances = pd.Series(importances, dataframe.columns[0:len(dataframe.columns)-1])
+feat_importances.plot(kind='barh', color = 'teal')
+plt.show()
+```
+Output
+```md
+Information Gain for each feature: [0.50192633 0.27889121 0.9924725  0.98664421]
+```
+### Mutual information
+Mutual informaton assess the dependence between variables by measuring the information obtained about one through the other.
+It is a **non-negative value** that indicates the degree of dependence between the variables: the higher the MI, the greater the dependence.
+```python
+from sklearn.feature_selection import mutual_info_regression
+import numpy as np
 
-**Missing value ratio**: Calculates the percentages of instances in a dataset for which a certain feature is missing or has a null value. If too many instances are missing a feature, it is not likely to be useful. 
+# Generate sample data
+np.random.seed(0)
+X = np.random.rand(100, 2)
+y = X[:, 0] + np.sin(6 * np.pi * X[:, 1])
 
-**Dispersion ratio**: The ratio of variance to the mean value for a feature. Higher dispersion indicates more information. 
+# Calculate Mutual Information using mutual_info_regression
+mutual_info = mutual_info_regression(X, y)
+print("Mutual Information for each feature:", mutual_info)
+```
+Output
+```md
+Mutual Information for each feature: [0.42283584 0.54090791]
+```
 
-**ANOVA (analysis of variance)**: Determines whether different feature values affect the value of the target variable.
+### Chi-square test
+Assesses the relationship between two categorical variables by comparing observed to expected values. Chi-squared test, or χ² test, helps in determining whether these two variables are associated with each other. To aplly chi-square test the data must be in categorical format, the observations must be independent, the sample must be randomly selected and the expected frequency for each category should be at least 5.
 
+```python
+from scipy.stats import chi2_contingency
+
+# defining the table
+data = [[207, 282, 241], [234, 242, 232]]
+stat, p, dof, expected = chi2_contingency(data)
+
+# interpret p-value
+alpha = 0.05
+print("p value is " + str(p))
+if p <= alpha:
+    print('Dependent (reject H0)')
+else:
+    print('Independent (H0 holds true)')
+```
+```md
+p value is 0.1031971404730939
+Independent (H0 holds true)
+```
+
+
+### Fisher’s score
+Fischer's socre uses derivatives to calculate the relative importance of each feature for classifying data. A higher score indicates greater influence. It works by comparing how much a feature varies between different classes versus how much it varies within the same class. Features that show big differences between classes, but are consistent within each class, are considered useful for classification
+```python
+from sklearn.feature_selection import SelectKBest, f_classif
+from sklearn.datasets import load_iris
+import pandas as pd
+
+# Load dataset
+data = load_iris()
+X, y = data.data, data.target
+feature_names = data.feature_names
+
+# Compute Fisher scores
+selector = SelectKBest(score_func=f_classif, k='all')
+selector.fit(X, y)
+scores = selector.scores_
+
+# Display results
+fisher_scores = pd.DataFrame({'Feature': feature_names, 'Fisher Score': scores})
+print(fisher_scores.sort_values(by='Fisher Score', ascending=False))
+```
+```md
+             Feature  Fisher Score
+2  petal length (cm)   1180.161182
+3   petal width (cm)    960.007147
+0  sepal length (cm)    119.264502
+1   sepal width (cm)     49.160040
+```
+
+
+### Pearson’s correlation coefficient (PCC)
+Correlation is the measure of linear relationship between 2 or more variables. Quantifies the relationship between two continuous variables with a score **ranging from -1 to 1.**
+
+### Variance threshold
+Removes all features that fall under a minimum degree of variance because features with more variances are likely to contain more useful information. A related method is the mean absolute difference (MAD). 
+```pyton
+from sklearn.feature_selection import VarianceThreshold
+import numpy as np
+
+# Sample dataset: 5 samples, 4 features
+X = np.array([
+    [0, 2, 0, 3],
+    [0, 1, 4, 3],
+    [0, 1, 1, 3],
+    [0, 1, 0, 3],
+    [0, 1, 3, 3] ])
+
+# Initialize VarianceThreshold
+selector = VarianceThreshold()
+
+# Fit and transform the data
+X_sele = selector.fit_transform(X)
+
+print("Original shape:", X.shape)
+print("Reduced shape:", X_sele.shape)
+print(X_sele)
+```
+```md
+Original shape: (5, 4)
+Reduced shape: (5, 2)
+[[2 0]
+ [1 4]
+ [1 1]
+ [1 0]
+ [1 3]]
+```
 
 # Pipeline
 
